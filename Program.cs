@@ -22,6 +22,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options=>options.UseMySql(
   builder.Services.AddScoped<IAdminService , AdminService>();
   builder.Services.AddScoped<IManagerRepository , ManagerRepository>();
   builder.Services.AddScoped<IManagerService , ManagerService>();
+  builder.Services.AddScoped<ICEORepository , CEORepository>();
+  builder.Services.AddScoped<ICEOService , CEOService>();
+  
   // builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
   builder.Services.AddRazorPages();
 

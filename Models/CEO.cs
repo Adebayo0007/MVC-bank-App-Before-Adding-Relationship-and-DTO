@@ -14,6 +14,7 @@ namespace Bank_App.Models
         public string LastName {get;set;}
         [Required]
         public string Address {get;set;}
+        [DisplayName("CEO ID")]
         [Key]
         public string CEOId  {get; set;}
         public int Age {get;set;}

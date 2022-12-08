@@ -78,7 +78,7 @@ namespace Bank_App.Controllers
 
         [HttpPost , ActionName("UpdateCEO")]
         [ValidateAntiForgeryToken]
-         public IActionResult UpdateManager(CEO ceo)
+         public IActionResult UpdateCEO(CEO ceo)
         {
             _service.UpdateCEO(ceo);
             return RedirectToAction(nameof(CEOs));
