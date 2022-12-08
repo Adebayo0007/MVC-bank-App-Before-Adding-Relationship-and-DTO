@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_MobileBankApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221207102623_thirdMigration")]
-    partial class thirdMigration
+    [Migration("20221208221251_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,6 +65,62 @@ namespace MVC_MobileBankApp.Migrations
                     b.HasKey("CEOId");
 
                     b.ToTable("CEOs");
+                });
+
+            modelBuilder.Entity("Bank_App.Models.Customer", b =>
+                {
+                    b.Property<string>("AccountNumber")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<double>("AccountBalance")
+                        .HasColumnType("double");
+
+                    b.Property<int>("AccountType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("MaritalStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PassWord")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Pin")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("AccountNumber");
+
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("MVC_MobileBankApp.Models.Admin", b =>
@@ -157,6 +213,54 @@ namespace MVC_MobileBankApp.Migrations
                     b.HasKey("ManagerId");
 
                     b.ToTable("Managers");
+                });
+
+            modelBuilder.Entity("MVC_MobileBankApp.Models.Transaction", b =>
+                {
+                    b.Property<string>("RefNum")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<double>("AccountBalance")
+                        .HasColumnType("double");
+
+                    b.Property<string>("AccountNumber")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("double");
+
+                    b.Property<string>("CustomerAccountNumber")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Pin")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("TransactType")
+                        .HasColumnType("int");
+
+                    b.HasKey("RefNum");
+
+                    b.HasIndex("CustomerAccountNumber");
+
+                    b.ToTable("Transactions");
+                });
+
+            modelBuilder.Entity("MVC_MobileBankApp.Models.Transaction", b =>
+                {
+                    b.HasOne("Bank_App.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerAccountNumber");
+
+                    b.Navigation("Customer");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,6 +1,4 @@
-@{
-    Layout = null;
-}
+
 
 @model Admin
 <head>
@@ -18,7 +16,7 @@
         <div class=" card col-md-6">
             <div class="card-body ">
                 <div class="bg-light">
-                    <h1 class="tagcolor" style="color:mediumblue; font-family:cabri; text-align:center; font-size: 95px;">Login Admin Portal</h1>
+                    <h1 class="tagcolor" style="color:mediumblue; font-family:cabri; text-align:center; font-size: 90px;">Login Admin Portal</h1>
                     <p class="tagcolor" style="color:mediumblue; font-family:cabri; text-align:center; font-size: 45px;">Please fill in this form to Login.</p>
                     <hr class="tagcolor" style="color:mediumblue">
 
@@ -36,10 +34,10 @@
                             <label asp-for="PassWord" class="control-label"></label>
                             <input asp-for="PassWord" type="password" id="pass" name="password" class="form-control" />
                             <span asp-validation-for="PassWord" class="text-danger"></span>
-                        </div>
-                        <div style="float:right;">
+                       </div><br><br>
+                        <div>
                         
-                               <button style="color:green; font-family:cabri; text-align:center; font-size: 25px;" href="#myModal" type="submit" value="Submit" class="btn btn-success trigger-btn col-sm-12" data-toggle="modal">Login</button>
+                               <button style=" font-family:cabri; font-size: 20px;" href="#myModal" type="submit" value="Submit" class="btn btn-success trigger-btn col-sm-12" data-toggle="modal">Login</button>
                         </div>
                        
                   

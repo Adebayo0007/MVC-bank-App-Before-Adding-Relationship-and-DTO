@@ -52,7 +52,7 @@ namespace Bank_App.Services.Implementations
             managerr.LastName = manager.LastName ?? managerr.LastName;
             managerr.Email = manager.Email ?? managerr.Email;
             managerr.PassWord = manager.PassWord ?? managerr.PassWord;
-            managerr.Age = manager.Age != managerr.Age? manager.Age : manager.Age;
+            managerr.Age = manager.Age != managerr.Age? manager.Age : managerr.Age;
             managerr.Address = manager.Address ?? managerr.Address;
             managerr.MaritalStatus = manager.MaritalStatus;
             return _repo.UpdateManager(managerr);

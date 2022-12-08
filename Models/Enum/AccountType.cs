@@ -1,4 +1,4 @@
-namespace MobileBankApp
+namespace Bank_App.Models.Enum
 {
     public enum AccountType
     {

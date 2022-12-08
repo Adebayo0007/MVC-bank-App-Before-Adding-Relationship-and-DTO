@@ -19,6 +19,12 @@ namespace MVC_MobileBankApp.Controllers
             return View();
         }
 
+          public IActionResult ManageCustomer()
+        {
+            return View();
+        }
+
+
         public IActionResult CreateAdmin()
         {
             return View();
@@ -123,7 +129,7 @@ namespace MVC_MobileBankApp.Controllers
             }
             else
             {
-            return RedirectToAction(nameof(IndexPage));
+            return RedirectToAction(nameof(ManageCustomer));
             }
            
             

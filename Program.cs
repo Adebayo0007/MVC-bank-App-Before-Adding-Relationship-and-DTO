@@ -24,6 +24,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options=>options.UseMySql(
   builder.Services.AddScoped<IManagerService , ManagerService>();
   builder.Services.AddScoped<ICEORepository , CEORepository>();
   builder.Services.AddScoped<ICEOService , CEOService>();
+  builder.Services.AddScoped<ICustomerRepository , CustomerRepository>();
+  builder.Services.AddScoped<ICustomerService , CustomerService>();
+  builder.Services.AddScoped<ITransactionRepository , TransactionRepository>();
+  builder.Services.AddScoped<ITransactionService , TransactionService>();
+  
   
   // builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
   builder.Services.AddRazorPages();
