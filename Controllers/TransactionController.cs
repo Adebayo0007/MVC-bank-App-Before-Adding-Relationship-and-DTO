@@ -17,7 +17,7 @@ namespace Bank_App.Controllers
         {
             return View();
         }
-        
+
         public IActionResult CreateTransaction()
         {
             return View();
@@ -52,7 +52,7 @@ namespace Bank_App.Controllers
          public IActionResult DeleteTransactionConfirmed(string refNum)
         {
             _transactionService.DeleteTransactionUsingRefNum(refNum);
-            return RedirectToAction(nameof(IndexTransactionPage));
+            return RedirectToAction(nameof(Transactions));
         }
         
          public IActionResult Transactions()

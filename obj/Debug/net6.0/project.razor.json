@@ -16298,6 +16298,11 @@
   "RootNamespace": "MVC_MobileBankApp",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\user\\Desktop\\Bank App\\Views\\Transaction\\GetAccountTransactions.cshtml",
+      "TargetPath": "Views\\Transaction\\GetAccountTransactions.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\user\\Desktop\\Bank App\\Views\\Customer\\LogIn.cshtml",
       "TargetPath": "Views\\Customer\\LogIn.cshtml",
       "FileKind": "mvc"
@@ -16315,6 +16320,11 @@
     {
       "FilePath": "c:\\Users\\user\\Desktop\\Bank App\\Views\\Customer\\CreateCustomer.cshtml",
       "TargetPath": "Views\\Customer\\CreateCustomer.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\Desktop\\Bank App\\Views\\Transaction\\TransactionDetails.cshtml",
+      "TargetPath": "Views\\Transaction\\TransactionDetails.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16395,6 +16405,11 @@
     {
       "FilePath": "c:\\Users\\user\\Desktop\\Bank App\\Views\\Customer\\ManageTransaction.cshtml",
       "TargetPath": "Views\\Customer\\ManageTransaction.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\Desktop\\Bank App\\Views\\Transaction\\Transactions.cshtml",
+      "TargetPath": "Views\\Transaction\\Transactions.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16490,6 +16505,11 @@
     {
       "FilePath": "c:\\Users\\user\\Desktop\\Bank App\\Views\\CEO\\LogInCEO.cshtml",
       "TargetPath": "Views\\CEO\\LogInCEO.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\Desktop\\Bank App\\Views\\Transaction\\DeleteTransaction.cshtml",
+      "TargetPath": "Views\\Transaction\\DeleteTransaction.cshtml",
       "FileKind": "mvc"
     },
     {
