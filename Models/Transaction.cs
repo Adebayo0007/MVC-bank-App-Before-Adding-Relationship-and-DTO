@@ -14,6 +14,7 @@ namespace MVC_MobileBankApp.Models
         [Key]
         [DisplayName("Ref Number")]
         public string RefNum{get;set;}
+        [DisplayName("Transaction Type")]
         public TransactionType TransactType {get; set;}
         public string Description {get;set;}
 
