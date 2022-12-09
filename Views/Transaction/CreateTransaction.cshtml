@@ -34,6 +34,13 @@
             <span asp-validation-for="AccountNumber" class="text-danger"></span>
 
         </div><br>
+         <div class = "form-row">
+          
+            <label  class = "control-label">Recipient Account Number if Transfer</label>
+            <input asp-for = "RecipientAccountNumber"  class = "form-control" placeholder="0123456789" />
+            <span asp-validation-for="AccountNumber" class="text-danger"></span>
+
+        </div><br>
         <div class = "form-row">
             <label asp-for = "Description" class = "control-label"></label>
             <input asp-for = "Description" class = "form-control" placeholder="Payment"/>

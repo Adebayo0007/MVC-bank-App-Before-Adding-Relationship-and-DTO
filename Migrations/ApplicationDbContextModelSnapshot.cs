@@ -242,6 +242,9 @@ namespace MVC_MobileBankApp.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("RecipientAccountNumber")
+                        .HasColumnType("longtext");
+
                     b.Property<int>("TransactType")
                         .HasColumnType("int");
 

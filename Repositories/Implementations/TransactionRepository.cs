@@ -12,14 +12,23 @@ namespace Bank_App.Repositories.Implementations
         {
             _context = context;
         }
+        public Transaction CreateTransaction(Transaction transaction)
+        {
+             _context.Transactions.Add(transaction);
+            _context.SaveChanges();
+            return transaction;
 
-        public Transaction CreateTransaction(Transaction transaction,Customer reciever = null)
+        }
+
+        public Transaction CreateTransfer(Transaction transaction)
         {
             _context.Transactions.Add(transaction);
+            var reciever = _context.Customers.Find(transaction.RecipientAccountNumber);
             _context.Customers.Update(reciever);
             _context.SaveChanges();
             return transaction;
         }
+        
 
         public void DeleteTransactionUsingRefNum(Transaction refNum)
         {

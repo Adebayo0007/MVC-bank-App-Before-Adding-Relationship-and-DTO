@@ -149,7 +149,9 @@ namespace MVC_MobileBankApp.Migrations
                     Pin = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     AccountBalance = table.Column<double>(type: "double", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    DateCreated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    RecipientAccountNumber = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {

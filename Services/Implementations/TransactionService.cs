@@ -16,19 +16,22 @@ namespace Bank_App.Services.Implementations
              _customerRepo = customerRepo;
         }
 
-        public Transaction CreateTransaction(Transaction transaction, string recieverAccountNumber = null)
+        public Transaction CreateTransaction(Transaction transaction)
         {
             double charges;
-            var reciever = _customerRepo.GetCustomerByAccountnumber(recieverAccountNumber);
+            var reciever = _customerRepo.GetCustomerByAccountnumber(transaction.RecipientAccountNumber);
            var customer = _customerRepo.GetCustomerByAccountnumber(transaction.AccountNumber);
+           object check = null;
              if((int)transaction.TransactType == 1)
             {
-                transaction.AccountBalance+=transaction.Amount;
+                customer.AccountBalance+=transaction.Amount;
+                transaction.AccountBalance = customer.AccountBalance;
                 string alpha  ="abcdefghijklmnopqrstuvwxyz".ToUpper();
                 var i = new Random().Next(25);
                 var j = new Random().Next(25);
                 var k = new Random().Next(25,99);
                 transaction.RefNum= $"Ref{k}{i}{j}{alpha[i]}{alpha[j]}" ;
+               check =  _transactionRepo.CreateTransaction(transaction); 
 
             }
             else if((int)transaction.TransactType == 2)
@@ -52,6 +55,7 @@ namespace Bank_App.Services.Implementations
                             var j = new Random().Next(25);
                             var k = new Random().Next(25,99);
                             transaction.RefNum= $"Ref{k}{i}{j}{alpha[i]}{alpha[j]}" ;
+                             check =  _transactionRepo.CreateTransaction(transaction); 
 
                         }
                            
@@ -76,6 +80,7 @@ namespace Bank_App.Services.Implementations
                             var j = new Random().Next(25);
                             var k = new Random().Next(25,99);
                             transaction.RefNum= $"Ref{k}{i}{j}{alpha[i]}{alpha[j]}" ;
+                             check =  _transactionRepo.CreateTransaction(transaction); 
                     }
                 }
 
@@ -105,6 +110,7 @@ namespace Bank_App.Services.Implementations
                             var j = new Random().Next(25);
                             var k = new Random().Next(25,99);
                             transaction.RefNum= $"Ref{k}{i}{j}{alpha[i]}{alpha[j]}" ;
+                             check =  _transactionRepo.CreateTransfer(transaction); 
 
                         }
                            
@@ -130,6 +136,7 @@ namespace Bank_App.Services.Implementations
                             var j = new Random().Next(25);
                             var k = new Random().Next(25,99);
                             transaction.RefNum= $"Ref{k}{i}{j}{alpha[i]}{alpha[j]}" ;
+                             check =  _transactionRepo.CreateTransfer(transaction); 
                     }
                 }
 
@@ -151,6 +158,7 @@ namespace Bank_App.Services.Implementations
                             var j = new Random().Next(25);
                             var k = new Random().Next(25,99);
                             transaction.RefNum= $"Ref{k}{i}{j}{alpha[i]}{alpha[j]}" ;
+                             check =  _transactionRepo.CreateTransaction(transaction); 
 
                         }
                            
@@ -169,13 +177,14 @@ namespace Bank_App.Services.Implementations
                             var j = new Random().Next(25);
                             var k = new Random().Next(25,99);
                             transaction.RefNum= $"Ref{k}{i}{j}{alpha[i]}{alpha[j]}" ;
+                             check =  _transactionRepo.CreateTransaction(transaction); 
                     }
                 }
 
                 
              }
            
-             return  _transactionRepo.CreateTransaction(transaction,reciever); 
+             return (Transaction)check;
         }
 
         public void DeleteTransactionUsingRefNum(string refNum)

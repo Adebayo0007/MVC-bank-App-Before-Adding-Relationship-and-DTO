@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_MobileBankApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221208221251_init")]
+    [Migration("20221209122235_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -242,6 +242,9 @@ namespace MVC_MobileBankApp.Migrations
 
                     b.Property<string>("Pin")
                         .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("RecipientAccountNumber")
                         .HasColumnType("longtext");
 
                     b.Property<int>("TransactType")

@@ -5,7 +5,8 @@ namespace Bank_App.Repositories.Interfaces
 {
     public interface ITransactionRepository
     {
-        Transaction CreateTransaction(Transaction transaction,Customer reciever);
+        Transaction CreateTransfer(Transaction transfer);
+        Transaction CreateTransaction(Transaction transaction);
        void DeleteTransactionUsingRefNum(Transaction refNum);
        Transaction GetTransactionByRefNum(string refNum);
        IList<Transaction> GetAllTransactionUsingAccountNumber(string accountNumber);

@@ -5,7 +5,7 @@ namespace Bank_App.Services.Interfaces
 {
     public interface ITransactionService
     {
-        Transaction CreateTransaction(Transaction transaction,string recieverAccountNumber);
+        Transaction CreateTransaction(Transaction transaction);
        void DeleteTransactionUsingRefNum(string refNum);
        Transaction GetTransactionByRefNum(string refNum);
        IList<Transaction> GetAllTransactionUsingAccountNumber(string accountNumber);

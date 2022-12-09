@@ -6,12 +6,10 @@ namespace Bank_App.Controllers
     public class TransactionController : Controller
     {
          private readonly ITransactionService _transactionService;
-         private readonly ICustomerService _customerService;
-
-        public TransactionController(ITransactionService transactionService, ICustomerService customerService)
+        public TransactionController(ITransactionService transactionService)
         {
             _transactionService = transactionService;
-            _customerService = customerService;
+        
         }
 
          [HttpGet]
@@ -20,7 +18,6 @@ namespace Bank_App.Controllers
             return View();
         }
         
-
         public IActionResult CreateTransaction()
         {
             return View();
@@ -28,13 +25,13 @@ namespace Bank_App.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-         public IActionResult CreateTransaction(Transaction transaction,string reciever)
+         public IActionResult CreateTransaction(Transaction transaction)
         {
             if(transaction != null)
             {
-                _transactionService.CreateTransaction(transaction,reciever);
+                _transactionService.CreateTransaction(transaction);
                 TempData["success"] = "Transaction Successfully";
-                return RedirectToAction(nameof(IndexTransactionPage));
+                return RedirectToAction("ManageTransaction", "Customer");
             }
             else
             {
@@ -44,86 +41,40 @@ namespace Bank_App.Controllers
         }
 
        
-        //  public IActionResult DeleteManager(string managerId)
-        // {            
-        //     var manager = _service.GetManagerById(managerId);
-        //     return View(manager);          
-        // }
+         public IActionResult DeleteTransaction(string refNum)
+        {            
+            var transaction = _transactionService.GetTransactionByRefNum(refNum);
+            return View(transaction);          
+        }
 
-        // [HttpPost , ActionName("DeleteManager")]
-        // [ValidateAntiForgeryToken]
-        //  public IActionResult DeleteManagerConfirmed(string managerId)
-        // {
-        //     _service.DeleteManagerUsingId(managerId);
-        //     return RedirectToAction(nameof(IndexManagerPage));
-        // }
-
-        //   [HttpGet]
-        //  public IActionResult UpdateManager(string managerId)
-        // {       
-        //     if(managerId == null)
-        //     {
-        //         return NotFound();
-        //     }
-        //     var manager = _service.GetManagerById(managerId);
-        //     if(manager == null)
-        //     {
-        //         return NotFound();
-        //     }
-        //     return View(manager);
-        // }
-
-        // [HttpPost , ActionName("UpdateManager")]
-        // [ValidateAntiForgeryToken]
-        //  public IActionResult UpdateManager(Manager manager)
-        // {
-        //     _service.UpdateManager(manager);
-        //     return RedirectToAction(nameof(Managers));
-        // }
-
-
-        //  public IActionResult LogInManager()
-        // {
-        //    return View();
-           
-        // }
-
-        // [HttpPost , ActionName("LogInManager")]
-        //  public IActionResult LogInConfirmed(string email,string passWord)
-        // {
-        //     if(email == null || passWord == null)
-        //     {
-        //         return NotFound();
-        //     }
-        //     var manager = _service.Login(email,passWord);
-        //     if (manager == null)
-        //     {
-        //          ViewBag.Error = "Invalid Email or PassWord";
-        //         return View();
-        //     }
-        //     else
-        //     {
-        //     return RedirectToAction(nameof(ManageAdmins));
-        //     }
-           
-            
-        // }
-
-
+        [HttpPost , ActionName("DeleteTransaction")]
+        [ValidateAntiForgeryToken]
+         public IActionResult DeleteTransactionConfirmed(string refNum)
+        {
+            _transactionService.DeleteTransactionUsingRefNum(refNum);
+            return RedirectToAction(nameof(IndexTransactionPage));
+        }
         
-        //  public IActionResult Managers()
-        // {
-        //     var managers = _service.GetAllManager();
-        //     return View(managers);
-        // }
+         public IActionResult Transactions()
+        {
+            var transaction = _transactionService.GetAllTransaction ();
+            return View(transaction);
+        }
+
+         public IActionResult GetAccountTransactions(string  accountNumber)
+        {
+            var transaction = _transactionService.GetAllTransactionUsingAccountNumber(accountNumber);
+            return View(transaction);
+            
+        }
 
          
-        //  public IActionResult ManagerDetails(string managerId)
-        // {       
+         public IActionResult TransactionDetails(string refNum)
+        {       
             
-        //     var manager = _service.GetManagerById(managerId);
-        //     return View(manager);
-        // }
+            var transaction = _transactionService.GetTransactionByRefNum(refNum);
+            return View(transaction);
+        }
 
 
         
