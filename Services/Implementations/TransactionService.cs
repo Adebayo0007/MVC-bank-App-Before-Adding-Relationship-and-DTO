@@ -31,7 +31,7 @@ namespace Bank_App.Services.Implementations
                 var j = new Random().Next(25);
                 var k = new Random().Next(25,99);
                 transaction.RefNum= $"Ref{k}{i}{j}{alpha[i]}{alpha[j]}" ;
-               check =  _transactionRepo.CreateTransaction(transaction); 
+               check =  _transactionRepo.CreateTransaction(transaction);   
 
             }
             else if((int)transaction.TransactType == 2)

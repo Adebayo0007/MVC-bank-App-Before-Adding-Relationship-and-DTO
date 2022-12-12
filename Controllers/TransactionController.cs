@@ -29,8 +29,17 @@ namespace Bank_App.Controllers
         {
             if(transaction != null)
             {
-                _transactionService.CreateTransaction(transaction);
-                TempData["success"] = "Transaction Successfully";
+                var transact = _transactionService.CreateTransaction(transaction);
+                if(transact != null)
+                {
+                    TempData["success"] = "Transaction Successfully";
+                    TempData.Keep();
+                }
+                else
+                {
+                   TempData["invalid"] = "Invalid Transaction"; 
+                   TempData.Keep();
+                }
                 return RedirectToAction("ManageTransaction", "Customer");
             }
             else
