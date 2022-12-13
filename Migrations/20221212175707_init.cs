@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -164,14 +165,87 @@ namespace MVC_MobileBankApp.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Email = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CustomerAccountNumber = table.Column<string>(type: "varchar(255)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    AdminStaffId = table.Column<string>(type: "varchar(255)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ManagerId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CEOId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PassWord = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Admins_AdminStaffId",
+                        column: x => x.AdminStaffId,
+                        principalTable: "Admins",
+                        principalColumn: "StaffId");
+                    table.ForeignKey(
+                        name: "FK_Users_CEOs_CEOId",
+                        column: x => x.CEOId,
+                        principalTable: "CEOs",
+                        principalColumn: "CEOId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Users_Customers_CustomerAccountNumber",
+                        column: x => x.CustomerAccountNumber,
+                        principalTable: "Customers",
+                        principalColumn: "AccountNumber");
+                    table.ForeignKey(
+                        name: "FK_Users_Managers_ManagerId",
+                        column: x => x.ManagerId,
+                        principalTable: "Managers",
+                        principalColumn: "ManagerId",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Transactions_CustomerAccountNumber",
                 table: "Transactions",
                 column: "CustomerAccountNumber");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_AdminStaffId",
+                table: "Users",
+                column: "AdminStaffId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_CEOId",
+                table: "Users",
+                column: "CEOId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_CustomerAccountNumber",
+                table: "Users",
+                column: "CustomerAccountNumber");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_ManagerId",
+                table: "Users",
+                column: "ManagerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Transactions");
+
+            migrationBuilder.DropTable(
+                name: "Users");
+
             migrationBuilder.DropTable(
                 name: "Admins");
 
@@ -179,13 +253,10 @@ namespace MVC_MobileBankApp.Migrations
                 name: "CEOs");
 
             migrationBuilder.DropTable(
-                name: "Managers");
-
-            migrationBuilder.DropTable(
-                name: "Transactions");
-
-            migrationBuilder.DropTable(
                 name: "Customers");
+
+            migrationBuilder.DropTable(
+                name: "Managers");
         }
     }
 }

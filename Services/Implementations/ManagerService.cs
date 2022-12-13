@@ -14,6 +14,11 @@ namespace Bank_App.Services.Implementations
         }
         public Manager CreateManager(Manager manager)
         {
+              var user = new User
+            {
+                Email = manager.Email,
+                PassWord = manager.PassWord
+            };
             var rand = new Random();
              manager.ManagerId = "ZENITH-MANAGER-"+rand.Next(0, 9).ToString()+rand.Next(50, 99).ToString()+"-" +manager.FirstName[0]+manager.FirstName[1]+manager.FirstName[2]+rand.Next(0,9).ToString();
              return  _repo.CreateManager(manager);  

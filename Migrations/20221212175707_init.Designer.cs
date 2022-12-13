@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC_MobileBankApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221209122235_init")]
+    [Migration("20221212175707_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -257,6 +257,47 @@ namespace MVC_MobileBankApp.Migrations
                     b.ToTable("Transactions");
                 });
 
+            modelBuilder.Entity("MVC_MobileBankApp.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("AdminStaffId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("CEOId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("CustomerAccountNumber")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ManagerId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("PassWord")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdminStaffId");
+
+                    b.HasIndex("CEOId");
+
+                    b.HasIndex("CustomerAccountNumber");
+
+                    b.HasIndex("ManagerId");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("MVC_MobileBankApp.Models.Transaction", b =>
                 {
                     b.HasOne("Bank_App.Models.Customer", "Customer")
@@ -264,6 +305,37 @@ namespace MVC_MobileBankApp.Migrations
                         .HasForeignKey("CustomerAccountNumber");
 
                     b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("MVC_MobileBankApp.Models.User", b =>
+                {
+                    b.HasOne("MVC_MobileBankApp.Models.Admin", "Admin")
+                        .WithMany()
+                        .HasForeignKey("AdminStaffId");
+
+                    b.HasOne("Bank_App.Models.CEO", "Ceo")
+                        .WithMany()
+                        .HasForeignKey("CEOId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Bank_App.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerAccountNumber");
+
+                    b.HasOne("MVC_MobileBankApp.Models.Manager", "Manager")
+                        .WithMany()
+                        .HasForeignKey("ManagerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Admin");
+
+                    b.Navigation("Ceo");
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Manager");
                 });
 #pragma warning restore 612, 618
         }

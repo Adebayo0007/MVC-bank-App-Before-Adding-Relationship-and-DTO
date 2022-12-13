@@ -18,16 +18,18 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options=>options.UseMySql(
   builder.Configuration.GetConnectionString("DefaultConnection"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
   ));
-  builder.Services.AddScoped<IAdminRepository , AdminRepository>();
-  builder.Services.AddScoped<IAdminService , AdminService>();
-  builder.Services.AddScoped<IManagerRepository , ManagerRepository>();
-  builder.Services.AddScoped<IManagerService , ManagerService>();
-  builder.Services.AddScoped<ICEORepository , CEORepository>();
-  builder.Services.AddScoped<ICEOService , CEOService>();
-  builder.Services.AddScoped<ICustomerRepository , CustomerRepository>();
-  builder.Services.AddScoped<ICustomerService , CustomerService>();
-  builder.Services.AddScoped<ITransactionRepository , TransactionRepository>();
-  builder.Services.AddScoped<ITransactionService , TransactionService>();
+    builder.Services.AddScoped<IAdminRepository , AdminRepository>();
+    builder.Services.AddScoped<IAdminService , AdminService>();
+    builder.Services.AddScoped<IManagerRepository , ManagerRepository>();
+    builder.Services.AddScoped<IManagerService , ManagerService>();
+    builder.Services.AddScoped<ICEORepository , CEORepository>();
+    builder.Services.AddScoped<ICEOService , CEOService>();
+    builder.Services.AddScoped<ICustomerRepository , CustomerRepository>();
+    builder.Services.AddScoped<ICustomerService , CustomerService>();
+    builder.Services.AddScoped<ITransactionRepository , TransactionRepository>();
+    builder.Services.AddScoped<ITransactionService , TransactionService>();
+    builder.Services.AddScoped<IUserRepository , UserRepository>();
+    builder.Services.AddScoped<IUserService , UserService>();
   
   
   // builder.Services.AddRazorPages().AddRazorRuntimeCompilation();

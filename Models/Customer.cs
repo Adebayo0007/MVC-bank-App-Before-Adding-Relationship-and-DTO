@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Bank_App.Models.Enum;
 using MobileBankApp;
 using MobileBankApp.Enum;
+using MVC_MobileBankApp.Models;
 
 namespace Bank_App.Models
 {
