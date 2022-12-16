@@ -15,11 +15,11 @@ namespace Bank_App.Services.Implementations
         }
         public Customer CreateCustomer(Customer customer)
         {
-              var user = new User
-            {
-                Email = customer.Email,
-                PassWord = customer.PassWord
-            };
+            //   var user = new User
+            // {
+            //     Email = customer.Email,
+            //     PassWord = customer.PassWord
+            // };
                Random random = new Random();
                 Random rand = new Random();
                 customer.AccountNumber = $"{random.Next(300,700).ToString()}{random.Next(100, 900).ToString()}{rand.Next(100,400).ToString()}0";

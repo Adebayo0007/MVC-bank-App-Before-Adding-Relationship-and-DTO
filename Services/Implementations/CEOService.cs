@@ -15,11 +15,11 @@ namespace Bank_App.Services.Implementations
         }
         public CEO CreateCEO(CEO ceo)
         {
-              var user = new User
-            {
-                Email = ceo.Email,
-                PassWord = ceo.PassWord
-            };
+            //   var user = new User
+            // {
+            //     Email = ceo.Email,
+            //     PassWord = ceo.PassWord
+            // };
             
              var rand = new Random();
              ceo.CEOId= "ZENITH-CEO-"+rand.Next(0, 9).ToString()+rand.Next(50, 99).ToString()+"-" +ceo.FirstName[0]+ceo.FirstName[1]+ceo.FirstName[2]+rand.Next(0,9).ToString();

@@ -17,13 +17,13 @@ namespace MVC_MobileBankApp.Services.Implementations
         }
         public Admin CreateAdmin(Admin admin)
         {
-             var user = new User
-            {
-                Email = admin.Email,
-                PassWord = admin.PassWord
+            //  var user = new User
+            // {
+            //     Email = admin.Email,
+            //     PassWord = admin.PassWord
             
-            };
-            _userRepo.CreateUser(user);
+            // };
+            // _userRepo.CreateUser(user);
              var rand = new Random();
              admin.StaffId = "ZENITH-ADMIN-"+rand.Next(0, 9).ToString()+rand.Next(50, 99).ToString()+"-" +admin.FirstName[0]+admin.FirstName[1]+admin.FirstName[2]+rand.Next(0,9).ToString();
              return  _repo.CreateAdmin(admin);  
